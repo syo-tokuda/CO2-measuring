@@ -30,8 +30,13 @@ class PythonController extends Controller
         exec($command , $CO2_top);
         $command = "python " . $pythonPath . "CdS.py " . $datecount . " " . $fromtime . " " . $totime;
         exec($command , $CdS);
+        $command = "python " . $pythonPath . "lastdata.py";
+        exec($command , $last);
+        foreach($last as $ldata)
+            $lastdata = $ldata;
+        $lastdata = mb_strstr($lastdata, '.', true);
         
-        return view('view', compact('labels', 'temperature', 'humidity', 'height', 'CO2_lifting', 'CO2_bottom', 'CO2_top', 'CdS', 'datecount', 'date', 'timewidth', 'fromtime', 'totime'));
+        return view('view', compact('labels', 'temperature', 'humidity', 'height', 'CO2_lifting', 'CO2_bottom', 'CO2_top', 'CdS', 'datecount', 'date', 'timewidth', 'fromtime', 'totime', 'lastdata'));
     }
 
     public function store(Request $request)
@@ -93,9 +98,14 @@ class PythonController extends Controller
         exec($command , $CO2_top);
         $command = "python " . $pythonPath . "CdS.py " . $datecount . " " . $fromtime . " " . $totime;
         exec($command , $CdS);
+        $command = "python " . $pythonPath . "lastdata.py";
+        exec($command , $last);
+        foreach($last as $ldata)
+            $lastdata = $ldata;
+        $lastdata = mb_strstr($lastdata, '.', true);
         $date_plusday = $datecount . " day";
         $date = date('Y-m-d', strtotime($date_plusday));
         
-        return view('view', compact('labels', 'temperature', 'humidity', 'height', 'CO2_lifting', 'CO2_bottom', 'CO2_top', 'CdS', 'datecount', 'date', 'timewidth', 'fromtime', 'totime'));
+        return view('view', compact('labels', 'temperature', 'humidity', 'height', 'CO2_lifting', 'CO2_bottom', 'CO2_top', 'CdS', 'datecount', 'date', 'timewidth', 'fromtime', 'totime', 'lastdata'));
     }
 }
