@@ -91,7 +91,7 @@ function is_mobile()
     @if (is_mobile())
     <div style="width: 80%" class="mx-auto flex">
         <canvas id="chart" width="100" height="50"></canvas>
-        <button id="reset" class="h-14 bg-orange-500 text-white" onclick="reset()">reset zoom</button>
+        <button id="reset" class="h-12 bg-orange-500 text-white" onclick="reset()">reset zoom</button>
         <script>
             function reset() {
                 chart.resetZoom();
