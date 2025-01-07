@@ -273,5 +273,6 @@ function is_mobile()
     <!-- @foreach($labels as $label)
         {{$label}}
     @endforeach -->
+    <!-- data:{{$lastdata}} -->
 </body>
 </html>
